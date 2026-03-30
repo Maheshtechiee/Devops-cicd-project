@@ -26,17 +26,18 @@ jobs:
           python app.py &
           sleep 5
 
-      # ✅ LOGIN (official way)
+      # ✅ LOGIN (Official and Secure)
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # ✅ BUILD + PUSH (official way)
+      # ✅ BUILD + PUSH
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/devops-app:latestgi
+          # Make sure 'devops-app' matches your repository name on Docker Hub
+          tags: ${{ secrets.DOCKER_USERNAME }}/devops-app:latest
